@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+</head>
+<body>
+<style type="text/css">
+body{
+  background: linear-gradient(to right, #b086c0, #6b417c);
+  /*background: linear-gradient(to right, #bbd2c5, #536976); */
+}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 98%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 2;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@keyframes pisca{
+  0% {
+    background-color: rgb(75, 75, 75);
+    box-shadow: 0px 0px 0px 1px #333;
+  }
+  50%{
+    background-color: white;
+    box-shadow: 0px 0px 5px 0px #fff;
+  }
+  100%{
+    background-color: #333;
+    box-shadow: 0px 0px 0px 0px #333;
+  }
+}
+
+.notification.on .badge{
+  height: 8px;
+  width: 8px;
+  display: table;
+  position: absolute;
+  float: right;
+  background-color: #333;
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-left: 25px;
+  box-shadow: none;
+
+}
+.screen{
+  height: 87vh;
+  width: 50vh;
+  background-color: white;
+  border: solid 3px #222;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  box-sizing: border-box;
+ }
+
+.smartphone{
+  display: table;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: #333;
+  border-radius: 30px;
+  position: relative;
+  border: solid 1px #222;
+  height: 95vh;
+  box-sizing: border-box;
+ 
+}
+
+.btn-up-down{
+  height: 100px;
+  float: left;
+  position: absolute;
+  margin-left: -17px;
+  margin-top: 90px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 5px;
+}
+.btn{
+  display: table;
+  display: none;
+  width: 10px;
+  background-color: #333;
+}
+.cam{
+  border-radius: 15px;
+  height: 15px;
+  width: 15px;
+  display: table;
+  background-color: #444;
+  border: solid 1px #222;
+  margin: 0 auto;
+  
+}
+.controls, .header{
+  height: 30px;
+  display: table;
+  width: 90%;
+}
+body{
+    cursor: grab;
+}
+.screen-mobile{
+  display: none;
+  width: 98vw;
+  height: 100vh;
+}
+@media (max-width: 500px) 
+{
+  .smartphone{
+    display: none;
+  }
+  .screen-mobile{
+    display: block;
+  }
+}
+</style>
+</section>
+<iframe class='screen' src="jogo.html"></iframe>
+</div>
+<iframe class='screen-mobile' src="jogo.html">
+</iframe>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Qual o cantor?</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="font/material-icons.css"> 
+</head>
+<body>
+
+  <!-- inicio -->
+  <section class="inicio">
+    <h1>QUAL O CANTOR?</h1>    
+    <button>COMEÇAR</button>
+  </section>
+  <!-- inicio -->
+  
+  <!-- flag-1 -->
+  <section class="flag flag-1">  
+    <header>
+      <p>
+        <span class="mticons">star</span> 
+        ACERTOS: <span class="acertos">0</span>
+      </p>
+      <p>
+        <span class="mticons">alarm</span> 
+        <span class="minutos">00</span>:<span class="tempo">00</span>
+      </p>
+    </header>
+    <div>
+      <h1>QUAIS OS 3 CANTORES?</h1>
+      <ul>
+        <li><img class="errado01" src="img/cantor/shakiraa.jpg"></li>
+        <li><img class="certo c3" src="img/cantor/anitta.jpg"></li>
+        <li><img class="errado01" src="img/cantor/maluma.jpg"></li>
+        <li><img class="errado01" src="img/cantor/justin.jpg"></li>
+        <li><img class="certo c2" src="img/cantor/kid.jpg"></li>
+        <li><img class="errado01" src="img/cantor/beyonce.jpg"></li>
+        <li><img class="errado01" src="img/cantor/iza.jpg"></li>
+        <li><img class="certo c1" src="img/cantor/jorge.jpg"></li>
+        <li><img class="errado01" src="img/cantor/seujorge.jpg"></li>
+      </ul>
+    </div>
+    <footer>
+      <p>
+        <span class="som01 mticons">volume_up</span>
+        <span class="home mticons">home</span>
+        <span class="ajuda mticons">help_outline</span>
+      </p>
+    </footer>
+  </section>
+  <!-- flag-1 -->
+  <!-- flag-3 -->
+  <section class="flag-3">
+    <h2> ACERTOS: <span class="pont">0</span></h2>
+    <h2> ERROS: <span class="errors">0</span></h2>
+    <p></p>
+    
+    <button class="jogarnov">JOGAR NOVAMENTE</button>
+  </section>
+  <!-- flag-3 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <script type="text/javascript">
+    var musica = new Audio();
+    var musica01 = new Audio();
+    var musica02 = new Audio();
+    var musica03 = new Audio();
+    var acertos = 0;
+    var erros = 0;
+    var erros02 = 0;
+    var fim = false;
+
+    $("section.inicio button").on("click", function() {
+      musica01 = new Audio('musica/carolina-carol-bela.mp3');
+      musica01.play();
+
+      musica02 = new Audio('musica/memories-official-video.mp3');
+      musica02.play();
+
+      musica03 = new Audio('musica/veneno-official-music-video.mp3');
+      musica03.play();
+    
+      $("section").hide();
+      $("section.flag-1").show();
+      
+      var timer = setInterval(function() {
+        var tempo = parseInt($("span.tempo").text());
+        var tempo02 = parseInt($("span.tempo02").text());
+        tempo++;
+        if (tempo < 10) {
+          tempo = "0" + tempo;
+          tempo02 = "0" + tempo;
+        } else if ((tempo >= 30) && (fim === false)) {
+          $("span.pont").text(acertos);
+          $("span.errors").text(erros + erros02);
+          $("section").hide();
+          $("section.flag-3").show();
+          document.getElementById("tempo").style.display = "none";
+          musica01.pause();
+          musica02.pause();
+          musica03.pause();
+          musica.play();
+          clearInterval(timer);
+        }
+        $("span.tempo").text(tempo);
+        $("span.tempo02").text(tempo);
+      }, 1000)
+    });
+
+    $("section.flag footer p span.home").on("click",function(){
+      location.reload();
+    })
+
+    $("section.flag-1 footer p span.som01").on("click", function() {
+      var botao = $("span.som02").text();
+      if (botao == "volume_up") {
+        musica01.pause();
+        musica02.pause();
+        musica03.pause();
+        $("span.som02").text("volume_off");
+      } else {
+        $("span.som02").text("volume_up");
+        musica01.play();
+        musica02.play();
+        musica03.play();
+      }
+    });
+
+    $("section.flag-1 footer p span.ajuda").one("click", function() {
+      $(this).css({opacity: 0.8});
+      var bandeiras = $(".errado01");
+      for (var i=0; i<2; i++) {
+        var random = Math.floor(Math.random() * bandeiras.length);
+        if (bandeiras[random].style.opacity === "0.8") {
+          i--;
+        } else {
+          bandeiras[random].style.opacity = "0.8";
+        }
+      }
+    });
+
+    $("section.flag-1 ul img.certo").one("click", function() {
+      $(this).css({opacity: 0.8});
+      acertos++;
+      $("span.acertos").text(acertos);
+
+      if (this.className === "certo c1") {
+        musica01.pause();
+        musica01 = new Audio('musica/carolina-carol-bela');
+      } else if (this.className === "certo c2") {
+        musica02.pause();
+        musica02 = new Audio('musica/memories-official-video.mp3');
+      } else if (this.className === "certo c3") {
+        musica03.pause();
+        musica03 = new Audio('musica/veneno-official-music-video.mp3');
+      }
+
+      if (acertos == 3) {
+        fim = true;
+        $("span.pont").text(acertos);
+        $("span.errors").text(erros + erros02);
+        $("span.temp").text($("span.tempo").text());
+        $("section").hide();
+        $("section.flag-3").show();
+      }
+    });
+
+    $("section.flag-1 ul img.errado01").one("click", function() {
+      if (this.style.opacity !== "0.8") {
+        erros++;
+        $(this).css({opacity: 0.8});
+
+        if (erros > 2) {
+          fim = true;
+          $("span.pont").text(acertos);
+          $("span.errors").text(erros);
+          $("span.temp").text($("span.tempo").text());
+          $("section").hide();
+          $("section.flag-3").show();
+        }
+      }
+    });
+    $("section.flag-3 button.jogarnov").on("click", function() {
+      location.reload();
+      $("section.flag-3").hide();
+      $("section").show();
+    });
+  </script> 
+  </body>
+  </html>
